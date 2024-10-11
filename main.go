@@ -6,9 +6,17 @@ import (
 
 func scanTransaction() float64 {
 		var userTrans float64
-        fmt.Println("Введите новую транзакцию: ")
+        fmt.Print("Введите новую транзакцию (n для выхода): ")
 		fmt.Scan(&userTrans)
 		return userTrans
+}
+
+func sumTrans(userAllTrans []float64) float64 {
+	var sum float64
+	for _, trans := range userAllTrans {
+		sum += trans
+	}
+	return sum
 }
 
 func main() {
@@ -21,5 +29,6 @@ func main() {
 		} 
 		userAllTrans = append(userAllTrans, userTrans) 
 	}
-	fmt.Println(userAllTrans)
+	sum := sumTrans(userAllTrans)
+	fmt.Printf("Итоговый баланс всех транзакций: %.2f\n", sum)
 }
